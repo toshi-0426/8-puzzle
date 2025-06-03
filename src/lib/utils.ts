@@ -59,3 +59,9 @@ export function moveCells(board: number[], index: number, zeroIndex:number){
     newBoard[index] = 0;
     return newBoard;
 }
+
+export function secondsToMinsSecs(seconds: number){
+    const min = Math.floor(seconds / 60);
+    const sec = seconds % 60;
+    return `${min}:${sec.toString().padStart(2, '0')}`
+}
