@@ -1,26 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getInitialBoard } from "../lib/puzzle-patterns";
 import Cell from "./cell";
 import Timer from "./Timer";
 import MoveCount from "./MoveCount";
 import Button from "./button";
 import { isCompleted, isValidMove, moveCells } from "../lib/utils";
+import SuccessToast from "./SuccessToast";
 
 
 export default function GameBoard() {
-    //const initialBoard = getInitialBoard();
     const [board, setBoard] = useState(() => getInitialBoard());
     const [isSolved, setIsSolved] = useState(false);
-    //console.log(board);
-    /*
-    useEffect(() => {
-        console.log(board);
-    }, [board])
-*/
+    
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.target as HTMLInputElement;
         const index = Number(target.value);
-        //console.log(targetValue, typeof targetValue)
        
         const { isValid, zeroIndex } = isValidMove(board, index);
 
@@ -30,12 +24,11 @@ export default function GameBoard() {
 
         if (isCompleted(newBoard)) {
             setIsSolved(true);
-            console.log(newBoard);
-            console.log("Puzzle is completed!!!");
+            //console.log(newBoard);
+            //console.log("Puzzle is completed!!!");
             return;
         }
     };
-
 
 
     const handleNewGame = () => {
@@ -44,16 +37,21 @@ export default function GameBoard() {
     }
 
     return (
-        <div className="container w-full max-w-md max-h-md aspect-square">
+        <div className="w-full max-w-md max-h-md aspect-square">
             <div className="flex items-center justify-between my-4 mx-10 text-gray-900 font-bold gap-x-4">
                 <MoveCount />
                 <Timer />
             </div>
-            <div className="grid grid-cols-3 grid-rows-3 gap-1 p-3 border-2 border-gray-700 rounded bg-black/20">
-                {board.map((cell, i) => (
-                    <Cell disabled={isSolved} value={cell} key={i} index={i} onClick={handleClick}>{cell}</Cell>
-                ))}
+
+            <div className="relative">
+                <div className="grid grid-cols-3 grid-rows-3 gap-1 p-3 border-2 border-gray-700 rounded bg-black/20">
+                    {board.map((cell, i) => (
+                        <Cell disabled={isSolved} value={cell} key={i} index={i} onClick={handleClick}>{cell}</Cell>
+                    ))}
+                </div>
+                {isSolved && <SuccessToast />}
             </div>
+            
             <div className="flex item-center my-4 justify-center w-full">
                 <Button onClick={handleNewGame}>New Game</Button>
             </div> 
