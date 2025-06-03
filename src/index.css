@@ -3,5 +3,5 @@
 
 
 body {
-  @apply container mx-auto max-w-4xl bg-gray-100 dark:bg-slate-950 dark:text-slate-100;
+  @apply container mx-auto max-w-4xl bg-lime-500 px-2 border-6 border-gray-800 m-4;
 }
