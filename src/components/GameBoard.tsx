@@ -70,7 +70,7 @@ export default function GameBoard() {
             </div>
             
             <div className="flex item-center my-4 justify-center w-full">
-                <Button onClick={handleNewGame}>New Game</Button>
+                <Button className="w-full py-3 px-4" color="red" onClick={handleNewGame}>New Game</Button>
             </div> 
         </div>
     )

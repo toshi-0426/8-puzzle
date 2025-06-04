@@ -1,18 +1,19 @@
+import { ModeSelector } from "./ModeSelector";
 
-export default function Header() {
+type HeaderProps = {
+    activeMode: 'game' | 'solver',
+    onModeChange: (mode: 'game' | 'solver') => void,
+}
+
+export default function Header({
+    activeMode, onModeChange
+}: HeaderProps) {
     return (
-        <div className="mt-10 flex items-center justify-center mx-20 ">
+        <div className="mt-10 flex items-center justify-center mx-20 space-x-4">
             <div className="text-center text-2xl sm:text-4xl font-mono font-bold text-gray-800 text-shadow-xl tracking-widest drop-shadow-[2px_2px_0px_#306230]">
                 8-Puzzle
             </div>
-            <div className="flex items-center">
-                <button>
-                    Game
-                </button>
-                <button>
-                    Solver
-                </button>
-            </div>
+            <ModeSelector activeMode={activeMode} onModeChange={onModeChange} />
         </div>
         
     )
