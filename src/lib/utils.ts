@@ -1,19 +1,15 @@
-
-// return true if the valid board, otherwise false
 export function isCompleted(board: number[]): boolean {
     const answer = [1, 2, 3, 4, 5, 6, 7, 8, 0];
     return board.every((cell, index) => cell === answer[index]);
 }
 
 export function isValidMove(board: number[], index: number){
-    //xwconsole.log(board, index);
     let zeroIndex = -1;
     for (let i = 0; i < board.length; i++) {
         if (board[i] === 0){
             zeroIndex = i;
         }
     }
-    //console.log("Index of 0: ", zeroIndex);
     let isValid = false;
     switch (zeroIndex) {
         case 0:
@@ -53,6 +49,7 @@ export function isValidMove(board: number[], index: number){
     };
 }
 
+
 export function moveCells(board: number[], index: number, zeroIndex:number){
     const newBoard = [...board];
     newBoard[zeroIndex] = newBoard[index];
@@ -60,8 +57,15 @@ export function moveCells(board: number[], index: number, zeroIndex:number){
     return newBoard;
 }
 
+
 export function secondsToMinsSecs(seconds: number){
     const min = Math.floor(seconds / 60);
     const sec = seconds % 60;
     return `${min}:${sec.toString().padStart(2, '0')}`
+}
+
+
+export function findOptimalSolutionBFS(board: number[]){
+    console.log(board);
+    return [];
 }

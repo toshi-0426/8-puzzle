@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { getInitialBoard } from "../lib/puzzle-patterns";
-import Cell from "./cell";
 import Timer from "./Timer";
 import MoveCount from "./MoveCount";
-import Button from "./button";
 import { isCompleted, isValidMove, moveCells, secondsToMinsSecs } from "../lib/utils";
 import SuccessToast from "./SuccessToast";
+import Cell from "./Cell";
+import Button from "./Button";
 
 
 export default function GameBoard() {
@@ -17,10 +17,11 @@ export default function GameBoard() {
 
     useEffect(() => {
         if (!isStarting || isSolved) return;
+        
 
         const interval = setInterval(() => {
-            setSeconds(prev => prev + 1)
-        }, 1000)
+            setSeconds(prev => Math.min(prev + 1, 3599)); 
+            }, 1000);
         return () => clearInterval(interval);
     }, [isStarting, isSolved])
     
@@ -42,11 +43,12 @@ export default function GameBoard() {
         }
     };
 
-
     const handleNewGame = () => {
         setBoard(getInitialBoard());
         setIsSolved(false);
         setIsStarting(false);
+        setSeconds(0);
+        setCount(0);
     }
 
     const currentTime = secondsToMinsSecs(seconds);
