@@ -1,6 +1,6 @@
 import { create } from "zustand"
 import { getInitialBoard } from "../lib/puzzle-patterns"
-import { bfsSolver } from "../lib/solvers";
+import { aStarSolver, bfsSolver } from "../lib/solvers";
 import { moveCellsWithoutZeroIndex } from "../lib/utils";
 
 
@@ -12,6 +12,7 @@ type SolverBoardState = {
     isCalculating: boolean,
     isStarting: boolean,
     intervalId: number | null,
+    isSolved: boolean
 
     newGame: () => void,
     incrementMoveCounts: () => void,
@@ -29,6 +30,7 @@ export const useSolverBoardStore = create<SolverBoardState>((set, get) => ({
     path: [],
     isCalculating: false,
     isStarting: false,
+    isSolved: false,
     count: 0,
     intervalId: null,
 
@@ -39,6 +41,7 @@ export const useSolverBoardStore = create<SolverBoardState>((set, get) => ({
             count: 0,
             path: [],
             isStarting: false,
+            isSolved: false
         })
         console.log("New Game");
         setTimeout(() => get().calculatePath(), 50)
@@ -68,10 +71,8 @@ export const useSolverBoardStore = create<SolverBoardState>((set, get) => ({
             let result: number[] = []
             if (selectedAlgo === 'BFS'){
                 result = bfsSolver(currentBoard);
-            } else if (selectedAlgo === 'DFS'){
-                result = []
             } else if (selectedAlgo === 'A*'){
-                result = []
+                result = aStarSolver(currentBoard);
             }
             set({
                 path: result,
@@ -82,11 +83,12 @@ export const useSolverBoardStore = create<SolverBoardState>((set, get) => ({
     },
 
     startAnimation: () => {
-        const { path, isStarting } = get();
-        if (isStarting || path.length === 0) return;
+       
+        const { path, isStarting, isSolved } = get();
+        if (isStarting || path.length === 0 || isSolved) return;
 
         console.log('start animation with path:', path);
-        set({ isStarting: true });
+        set({ isStarting: true});
 
         let steps = 0;
         const interval = setInterval(() => {
@@ -108,7 +110,7 @@ export const useSolverBoardStore = create<SolverBoardState>((set, get) => ({
             steps++;
         }, 300);
 
-        set({ intervalId: interval });
+        set({ intervalId: interval, isSolved: true });
     },
 
     stopAnimation: () => {

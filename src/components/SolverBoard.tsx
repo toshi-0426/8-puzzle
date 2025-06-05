@@ -12,6 +12,7 @@ export default function SolverBoard() {
         path,
         isCalculating,
         isStarting,
+        isSolved,
         newGame,
         changeAlgorithm,
         calculatePath,
@@ -44,10 +45,9 @@ export default function SolverBoard() {
                 <div className="flex items-center gap-3">
                     <select defaultValue="BFS" onChange={(e) => changeAlgorithm(e.target.value)}>
                         <option value="BFS">BFS</option>
-                        <option value="DFS">DFS</option>
                         <option value="A*">A*</option>
                     </select>
-                    <Button disabled={isCalculating || isStarting} className="py-1 px-2" color="blue" onClick={handleStart}>Start</Button>
+                    <Button disabled={isCalculating || isStarting || isSolved} className="py-1 px-2" color="blue" onClick={handleStart}>Start</Button>
                 </div>
                 <MoveCount count={count}/>
             </div>

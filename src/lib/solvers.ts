@@ -2,21 +2,17 @@ import { moveCells } from "./utils";
 
 const targetBoard: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 0];
 
-export function bfsSolver(initialBoard: number[]){
-    //console.log("Initial board: ", initialBoard);
-    //console.log("Movable indices: ", movableIndices(initialBoard));
+export function bfsSolver(initialBoard: number[]): number[]{
     const queue: number[][] = [initialBoard];
     const visited = new Set<string>();
     const parent = new Map<string, { state:number[],moveIndex: number}>();
 
     visited.add(JSON.stringify(initialBoard));
-    //console.log(queue);
 
     while(queue.length > 0) {
         const currentBoard = queue.shift()!;
 
         if (isCompleted(currentBoard)){
-            //console.log("is completed", currentBoard);
             return reconstructPath(parent);
         }
         
@@ -37,12 +33,72 @@ export function bfsSolver(initialBoard: number[]){
     return [];
 }
 
-export function dfsSolver(){
-    return;
+
+interface SearchNode {
+    board: number[];
+    g: number;
+    h: number;
+    f: number;
+    path: number[];
 }
 
-export function aStarSolver(){
-    return;
+// using Manhattan Distance
+export function aStarSolver(initialBoard: number[]): number[]{
+    console.log(initialBoard);
+    const initialManhattanDistance = manhattanDistance(initialBoard);
+    const searchQueue: SearchNode[] = [{
+        board: initialBoard,
+        g: 0,
+        h: initialManhattanDistance,
+        f: initialManhattanDistance,
+        path: []
+    }];
+
+    const visited = new Set<string>();
+    const gScore = new Map<string, number>();
+    gScore.set(initialBoard.join(','), 0);
+
+    while (searchQueue.length > 0){
+        searchQueue.sort((a, b) => a.f - b.f);
+        const currentQueue= searchQueue.shift()!;
+        const currentKey = currentQueue.board.join('');
+
+        if (isCompleted(currentQueue.board)){
+            return currentQueue.path;
+        }
+
+        visited.add(currentKey);
+        const zi = zeroIndex(currentQueue.board);
+
+        for (const index of movableIndices(currentQueue.board)){
+            const newBoard = moveCells(currentQueue.board, index, zi);
+            const newKey = newBoard.join('');
+
+            if (visited.has(newKey)){
+                continue;
+            }
+
+            const tempG = currentQueue.g + 1;
+            if (!gScore.has(newKey) || tempG < gScore.get(newKey)!){
+                const distance = manhattanDistance(newBoard);
+                gScore.set(newKey,tempG);
+                const existingIndex = searchQueue.findIndex(node => (
+                    node.board.join('')  === newKey
+                ));
+                if (existingIndex !== -1){
+                    searchQueue.splice(existingIndex, 1);
+                }
+                searchQueue.push({
+                    board: newBoard,
+                    g: tempG,
+                    h: distance,
+                    f: tempG + distance,
+                    path: [...currentQueue.path, index]
+                })
+            }
+        }
+    };
+    return[]
 }
 
 export function greedySolver(){
@@ -107,3 +163,17 @@ function reconstructPath(parent: Map<string, { state:number[],moveIndex: number}
     }
     return path;
 };
+
+function manhattanDistance(board: number[]): number {
+    let distance = 0;
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] === 0) continue;
+        const row = Math.floor(i / 3);
+        const col = i % 3;
+        const targetPos = board[i] - 1
+        const targetRow = Math.floor(targetPos / 3);
+        const targetCol = targetPos % 3;
+        distance += Math.abs(row - targetRow) + Math.abs(col - targetCol);
+    }
+    return distance;
+}
