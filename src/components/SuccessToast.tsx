@@ -7,7 +7,6 @@ type SuccessToastProps = {
 export default function SuccessToast({
     count, time
 }: SuccessToastProps) {
-    console.log("SuccessToast rendered");
 
     return (
         <div className="absolute inset-0 flex items-center justify-center bg-green-600/97 text-white rounded">

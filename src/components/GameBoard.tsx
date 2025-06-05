@@ -25,6 +25,7 @@ export default function GameBoard() {
         return () => clearInterval(interval);
     }, [isStarting, isSolved])
     
+    
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         const target = event.target as HTMLInputElement;
         const index = Number(target.value);

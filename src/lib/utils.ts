@@ -49,6 +49,14 @@ export function isValidMove(board: number[], index: number){
     };
 }
 
+export function moveCellsWithoutZeroIndex(board: number[], index: number){
+    const zeroIndex = board.indexOf(0);
+    const newBoard = [...board];
+    newBoard[zeroIndex] = newBoard[index];
+    newBoard[index] = 0;
+    return newBoard;
+}
+
 
 export function moveCells(board: number[], index: number, zeroIndex:number){
     const newBoard = [...board];

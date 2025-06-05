@@ -3,7 +3,6 @@ type ModeSelectorProps = {
     onModeChange: (mode: 'game' | 'solver') => void;
 }
 
-
 export function ModeSelector ({
     activeMode, onModeChange
 }: ModeSelectorProps) {
