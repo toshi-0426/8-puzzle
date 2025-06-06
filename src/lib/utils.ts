@@ -1,4 +1,7 @@
 export function isCompleted(board: number[]): boolean {
+  if (!Array.isArray(board) || board.length !== 9) {
+    return false;
+  }
   const answer = [1, 2, 3, 4, 5, 6, 7, 8, 0];
   return board.every((cell, index) => cell === answer[index]);
 }
@@ -64,7 +67,13 @@ export function isValidMove(board: number[], index: number) {
   };
 }
 
-export function moveCellsWithoutZeroIndex(board: number[], index: number) {
+export function moveCellsWithoutZeroIndex(
+  board: number[],
+  index: number
+): number[] {
+  if (index < 0 || index > 8) {
+    throw new Error('Invalid index');
+  }
   const zeroIndex = board.indexOf(0);
   const newBoard = [...board];
   newBoard[zeroIndex] = newBoard[index];
@@ -73,6 +82,12 @@ export function moveCellsWithoutZeroIndex(board: number[], index: number) {
 }
 
 export function moveCells(board: number[], index: number, zeroIndex: number) {
+  if (index < 0 || index > 8) {
+    throw new Error('Invalid index');
+  }
+  if (zeroIndex < 0 || zeroIndex > 8) {
+    throw new Error('Invalid zero index');
+  }
   const newBoard = [...board];
   newBoard[zeroIndex] = newBoard[index];
   newBoard[index] = 0;
@@ -82,10 +97,5 @@ export function moveCells(board: number[], index: number, zeroIndex: number) {
 export function secondsToMinsSecs(seconds: number) {
   const min = Math.floor(seconds / 60);
   const sec = seconds % 60;
-  return `${min}:${sec.toString().padStart(2, '0')}`;
-}
-
-export function findOptimalSolutionBFS(board: number[]) {
-  console.log(board);
-  return [];
+  return `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
 }
