@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-const BOARD_PATTERNS = [
+export const BOARD_PATTERNS = [
   [5, 7, 6, 2, 3, 1, 8, 4],
   [8, 3, 2, 1, 6, 5, 7, 4],
   [8, 7, 6, 2, 1, 4, 3, 5],

@@ -109,7 +109,6 @@ interface GreedyNode {
 
 // greedy approach with manhattan distance, consider only manhattan distance
 export function greedySolver(initialBoard: number[]): number[] {
-  console.log(initialBoard);
   const searchQueue: GreedyNode[] = [
     {
       board: initialBoard,
@@ -209,7 +208,7 @@ function isValidMove(zeroIndex: number, index: number): boolean {
   }
 }
 
-function movableIndices(board: number[]): number[] {
+export function movableIndices(board: number[]): number[] {
   const zi = zeroIndex(board);
   const indices: number[] = [];
   for (let i = 0; i < board.length; i++) {
@@ -221,7 +220,7 @@ function movableIndices(board: number[]): number[] {
   return indices;
 }
 
-function reconstructPath(
+export function reconstructPath(
   parent: Map<string, { state: number[]; moveIndex: number }>
 ): number[] {
   const path: number[] = [];
@@ -235,7 +234,7 @@ function reconstructPath(
   return path;
 }
 
-function manhattanDistance(board: number[]): number {
+export function manhattanDistance(board: number[]): number {
   let distance = 0;
   for (let i = 0; i < board.length; i++) {
     if (board[i] === 0) continue;
