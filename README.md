@@ -14,7 +14,39 @@ This is a 8-puzzle (a 3×3 sliding‐tile puzzle) game built with React and Type
 
 ## Demo
 
-Here is a working live demo : [https://8-puzzle-nu.vercel.app](https://8-puzzle-nu.vercel.app/)
+Here is a working live demo : [https://8-puzzle-lac.vercel.app/](https://8-puzzle-lac.vercel.app/)
+
+## Technologies used
+
+- **UI Library & Build Tool**
+
+  - React
+  - Vite
+
+- **Language**
+
+  - TypeScript
+
+- **Styling**
+
+  - Tailwind CSS
+
+- **State Management**
+
+  - Zustand
+
+- **Algorithms**
+
+  - A\* search with Manhattan-distance heuristic
+  - BFS
+  - Greedy algorithm with Manhattan-distance
+
+- **Testing**
+
+  - Jest
+
+- **Deployment & CI**
+  - Vercel
 
 ## Features
 
