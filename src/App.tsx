@@ -9,10 +9,10 @@ function App() {
 
   return (
     <>
-      <div className=" mx-auto flex flex-col space-y-2 sm:border-6 border-gray-800 m-2 sm:pt-2 md:px-20 md:pt-8">
+      <div className=" mx-auto flex flex-col sm:space-y-2 sm:border-6 border-gray-800 m-2 sm:pt-2 md:px-20 md:pt-8">
         <div className="flex-shrink-0">
           <Header activeMode={activeMode} onModeChange={setActiveMode} />
-          <hr className="my-2 border-lime-600  border-[1.8px]" />
+          <hr className="my-1 sm:my-2 border-lime-600  border-[1.8px]" />
         </div>
         {activeMode === 'game' && (
           <div className="flex-1 flex justify-center">
