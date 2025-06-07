@@ -1,5 +1,5 @@
 @import 'tailwindcss';
 
 body {
-  @apply container mx-auto max-w-4xl bg-lime-500 min-h-screen flex justify-center my-2;
+  @apply container mx-auto max-w-4xl bg-lime-500 min-h-screen flex justify-center sm:my-2;
 }
