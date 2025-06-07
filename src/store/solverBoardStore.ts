@@ -10,7 +10,8 @@ type SolverBoardState = {
   path: number[];
   isCalculating: boolean;
   isStarting: boolean;
-  intervalId: number | null;
+  //intervalId: number | null;
+  intervalId: ReturnType<typeof setInterval> | null;
   isSolved: boolean;
 
   newGame: () => void;
