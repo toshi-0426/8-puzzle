@@ -64,7 +64,7 @@ export default function GameBoard() {
       </div>
 
       <div className="relative">
-        <div className="grid grid-cols-3 grid-rows-3 gap-1 p-3 border-2 border-gray-700 rounded bg-black/20">
+        <div className="grid grid-cols-3 grid-rows-3 gap-1 p-2 border-2 border-gray-700 rounded bg-black/20">
           {board.map((cell, i) => (
             <Cell
               disabled={isSolved}
@@ -81,11 +81,7 @@ export default function GameBoard() {
       </div>
 
       <div className="flex item-center my-4 justify-center w-full">
-        <Button
-          className="w-full py-3 px-4"
-          color="red"
-          onClick={handleNewGame}
-        >
+        <Button className="w-full p-3" color="red" onClick={handleNewGame}>
           New Game
         </Button>
       </div>
