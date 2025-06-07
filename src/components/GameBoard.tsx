@@ -80,8 +80,12 @@ export default function GameBoard() {
         {isSolved && <SuccessToast count={count} time={currentTime} />}
       </div>
 
-      <div className="flex item-center my-4 justify-center w-full">
-        <Button className="w-full p-3" color="red" onClick={handleNewGame}>
+      <div className="flex item-center my-2 sm:my-4 justify-center w-full">
+        <Button
+          className="w-full py-2 px-3"
+          color="red"
+          onClick={handleNewGame}
+        >
           New Game
         </Button>
       </div>

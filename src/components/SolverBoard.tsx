@@ -62,10 +62,10 @@ export default function SolverBoard() {
         </div>
       </div>
 
-      <div className="flex item-center my-4 justify-center w-full">
+      <div className="flex item-center my-2 sm:my-4 justify-center w-full">
         <Button
           disabled={isStarting || isCalculating}
-          className="w-full py-3 px-4"
+          className="w-full py-2 px-3"
           color="red"
           onClick={newGame}
         >
