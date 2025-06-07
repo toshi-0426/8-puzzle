@@ -10,8 +10,12 @@ export function ModeSelector({ activeMode, onModeChange }: ModeSelectorProps) {
       className="border-2 rounded border-gray-900"
       onChange={(e) => onModeChange(e.target.value as 'game' | 'solver')}
     >
-      <option value="game">Game</option>
-      <option value="solver">Solver</option>
+      <option value="game" className="p-2 md:text-lg">
+        Game
+      </option>
+      <option value="solver" className="p-2">
+        Solver
+      </option>
     </select>
   );
 }
