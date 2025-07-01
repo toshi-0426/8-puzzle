@@ -4,7 +4,7 @@
   </div>
   </ hr>
   <div>
-    <img src="./public/screenshots1.png" alt="8-puzzle" height="400" width="400"/>
+    <img src="./public/screenshots1.png" alt="8-puzzle" height="600" width="600"/>
   </div>
 </div>
 

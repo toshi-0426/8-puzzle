@@ -3,9 +3,10 @@ import GameBoard from './components/GameBoard';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import SolverBoard from './components/SolverBoard';
+import type { gameMode } from './types';
 
 function App() {
-  const [activeMode, setActiveMode] = useState<'game' | 'solver'>('game');
+  const [activeMode, setActiveMode] = useState<gameMode>('game');
 
   return (
     <>

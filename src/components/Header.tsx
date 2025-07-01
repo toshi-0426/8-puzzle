@@ -1,8 +1,9 @@
 import { ModeSelector } from './ModeSelector';
+import type { gameMode } from '../types';
 
 type HeaderProps = {
-  activeMode: 'game' | 'solver';
-  onModeChange: (mode: 'game' | 'solver') => void;
+  activeMode: gameMode;
+  onModeChange: (mode: gameMode) => void;
 };
 
 export default function Header({ activeMode, onModeChange }: HeaderProps) {
