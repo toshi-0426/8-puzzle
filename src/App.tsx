@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import GameBoard from '@/components/GameBoard';
+import GameBoard from '@/features/game/GameBoard';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SolverBoard from '@/components/SolverBoard';
+import SolverBoard from '@/features/solver/SolverBoard';
 import type { gameMode } from '@/types';
 
 function App() {
