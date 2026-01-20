@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import { getInitialBoard } from '../lib/puzzle-patterns';
-import { aStarSolver, bfsSolver, greedySolver } from '../lib/solvers';
-import { moveCellsWithoutZeroIndex } from '../lib/utils';
+import { getInitialBoard } from '@/lib/puzzle-patterns';
+import { aStarSolver, bfsSolver, greedySolver } from '@/lib/solvers';
+import { moveCellsWithoutZeroIndex } from '@/lib/utils';
 
 type SolverBoardState = {
   board: number[];

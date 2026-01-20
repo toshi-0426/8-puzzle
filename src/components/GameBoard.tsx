@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getInitialBoard } from '../lib/puzzle-patterns';
-import Timer from './Timer';
-import MoveCount from './MoveCount';
+import { getInitialBoard } from '@/lib/puzzle-patterns';
+import Timer from '@/components/Timer';
+import MoveCount from '@/components/MoveCount';
 import {
   isCompleted,
   isValidMove,
@@ -12,7 +12,7 @@ import SuccessToast from './SuccessToast';
 import Cell from './Cell';
 import Button from './Button';
 
-export default function GameBoard() {
+function GameBoard() {
   const [board, setBoard] = useState<number[]>(() => getInitialBoard());
   const [isSolved, setIsSolved] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
@@ -92,3 +92,4 @@ export default function GameBoard() {
     </div>
   );
 }
+export default GameBoard;

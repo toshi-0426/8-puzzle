@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import Cell from './Cell';
-import Button from './Button';
-import MoveCount from './MoveCount';
-import { useSolverBoardStore } from '../store/solverBoardStore';
+import Cell from '@/components/Cell';
+import Button from '@/components/Button';
+import MoveCount from '@/components/MoveCount';
+import { useSolverBoardStore } from '@/store/solverBoardStore';
 
-export default function SolverBoard() {
+function SolverBoard() {
   const {
     board,
     count,
@@ -75,3 +75,5 @@ export default function SolverBoard() {
     </div>
   );
 }
+
+export default SolverBoard;

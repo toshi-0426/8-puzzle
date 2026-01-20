@@ -1,6 +1,6 @@
 import { Github } from 'lucide-react';
 
-export default function Footer() {
+function Footer() {
   return (
     <footer className="rounded-lg mt-4 flex justify-center">
       <div className="flex items-center text-gray-500 space-x-4">
@@ -18,3 +18,4 @@ export default function Footer() {
     </footer>
   );
 }
+export default Footer;
