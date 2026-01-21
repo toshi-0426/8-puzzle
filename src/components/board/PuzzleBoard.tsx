@@ -14,7 +14,7 @@ function PuzzleBoard({ board, isSolved, handleMove }: PuzzleBoardProps) {
           <Cell
             disabled={isSolved || !handleMove}
             value={cell}
-            key={i}
+            key={cell}
             index={i}
             onClick={() => handleMove?.(i)}
           >

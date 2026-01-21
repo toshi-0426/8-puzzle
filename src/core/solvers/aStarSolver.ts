@@ -35,10 +35,9 @@ function aStarSolver(initialBoard: number[]): number[] {
     }
 
     visited.add(currentKey);
-    const zi = currentNode.board.indexOf(0); //zeroIndex(currentNode.board);
 
     for (const index of movableIndices(currentNode.board)) {
-      const newBoard = moveCells(currentNode.board, index, zi);
+      const newBoard = moveCells(currentNode.board, index);
       const newKey = newBoard.join('');
 
       if (visited.has(newKey)) {

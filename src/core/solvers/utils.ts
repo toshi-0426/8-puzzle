@@ -1,78 +1,8 @@
-import { isValidMove, targetBoard } from '@/core/puzzle';
-
-// export function zeroIndex(board: number[]): number {
-//   return board.indexOf(0);
-// }
-
-// export function isValidMove(zeroIndex: number, index: number): boolean {
-//   switch (zeroIndex) {
-//     case 0:
-//       return index === zeroIndex + 1 || index === zeroIndex + 3;
-//     case 1:
-//       return (
-//         index === zeroIndex - 1 ||
-//         index === zeroIndex + 1 ||
-//         index === zeroIndex + 3
-//       );
-//     case 2:
-//       return index === zeroIndex - 1 || index === zeroIndex + 3;
-//     case 3:
-//       return (
-//         index === zeroIndex - 3 ||
-//         index === zeroIndex + 1 ||
-//         index === zeroIndex + 3
-//       );
-//     case 4:
-//       return (
-//         index === zeroIndex - 3 ||
-//         index === zeroIndex - 1 ||
-//         index === zeroIndex + 1 ||
-//         index === zeroIndex + 3
-//       );
-//     case 5:
-//       return (
-//         index === zeroIndex - 3 ||
-//         index === zeroIndex - 1 ||
-//         index === zeroIndex + 3
-//       );
-//     case 6:
-//       return index === zeroIndex - 3 || index === zeroIndex + 1;
-//     case 7:
-//       return (
-//         index === zeroIndex - 3 ||
-//         index === zeroIndex - 1 ||
-//         index === zeroIndex + 1
-//       );
-//     case 8:
-//       return index === zeroIndex - 3 || index === zeroIndex - 1;
-//     default:
-//       return false;
-//   }
-// }
-
-export function moveCellsWithoutZeroIndex(
-  board: number[],
-  index: number
-): number[] {
-  if (index < 0 || index > 8) {
-    throw new Error('Invalid index');
-  }
-  const zeroIndex = board.indexOf(0);
-  const newBoard = [...board];
-  newBoard[zeroIndex] = newBoard[index];
-  newBoard[index] = 0;
-  return newBoard;
-}
+import { targetBoard, ADJACENT_INDICES } from '@/core/puzzle';
 
 export function movableIndices(board: number[]): number[] {
   const zi = board.indexOf(0);
-  const indices: number[] = [];
-  for (let i = 0; i < board.length; i++) {
-    if (i === zi) continue;
-    if (isValidMove(zi, i)) {
-      indices.push(i);
-    }
-  }
+  const indices = ADJACENT_INDICES[zi];
   return indices;
 }
 

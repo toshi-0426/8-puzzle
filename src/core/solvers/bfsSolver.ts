@@ -17,8 +17,7 @@ function bfsSolver(initialBoard: number[]): number[] {
 
     const indices = movableIndices(currentBoard);
     for (const index of indices) {
-      const zi = currentBoard.indexOf(0); //zeroIndex(currentBoard);
-      const newBoard = moveCells(currentBoard, index, zi);
+      const newBoard = moveCells(currentBoard, index);
       const newBoardStr = JSON.stringify(newBoard);
 
       if (!visited.has(newBoardStr)) {

@@ -8,7 +8,7 @@ export function isCompleted(board: number[]): boolean {
   return board.every((cell, index) => cell === targetBoard[index]);
 }
 
-const ADJACENT_INDICES: Record<number, number[]> = {
+export const ADJACENT_INDICES: Record<number, number[]> = {
   0: [1, 3],
   1: [0, 2, 4],
   2: [1, 5],
@@ -20,28 +20,24 @@ const ADJACENT_INDICES: Record<number, number[]> = {
   8: [5, 7],
 };
 
-export function isValidMove(zeroIndex: number, targetIndex: number): boolean {
-  const neighbors = ADJACENT_INDICES[zeroIndex];
+export function isValidMove(board: number[], targetIndex: number): boolean {
+  const zi = board.indexOf(0);
+  if (zi === -1) return false;
+  const neighbors = ADJACENT_INDICES[zi];
   return neighbors ? neighbors.includes(targetIndex) : false;
 }
 
-export function checkMove(board: number[], targetIndex: number) {
-  const zeroIndex = board.indexOf(0);
-  return {
-    isValid: isValidMove(zeroIndex, targetIndex),
-    zeroIndex,
-  };
-}
-
-export function moveCells(board: number[], index: number, zeroIndex: number) {
+export function moveCells(board: number[], index: number): number[] {
   if (index < 0 || index > 8) {
     throw new Error('Invalid index');
   }
-  if (zeroIndex < 0 || zeroIndex > 8) {
-    throw new Error('Invalid zero index');
+
+  const zi = board.indexOf(0);
+  if (zi === -1) {
+    throw new Error('No zero in board');
   }
   const newBoard = [...board];
-  newBoard[zeroIndex] = newBoard[index];
+  newBoard[zi] = newBoard[index];
   newBoard[index] = 0;
   return newBoard;
 }
