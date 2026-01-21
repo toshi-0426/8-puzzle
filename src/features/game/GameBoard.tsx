@@ -10,7 +10,7 @@ function GameBoard() {
 
   return (
     <div className="w-full max-w-md max-h-md aspect-square">
-      <div className="flex items-center justify-between my-4 mx-10 text-gray-900 font-bold gap-x-4">
+      <div className="flex items-center justify-between my-3 mx-10 text-gray-900 font-bold gap-x-4">
         <MoveCount count={count} />
         <Timer currentTime={currentTime} />
       </div>
