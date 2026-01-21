@@ -16,7 +16,7 @@ const colorDisabledClasses: Record<string, string> = {
   blue: 'bg-gray-300 border-gray-400 text-gray-400',
 };
 
-export default function Button({
+function Button({
   className = '',
   color,
   disabled = false,
@@ -37,3 +37,4 @@ export default function Button({
     </button>
   );
 }
+export default Button;

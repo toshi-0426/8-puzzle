@@ -8,7 +8,7 @@ type CellProps = {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export default function Cell({
+function Cell({
   value,
   index,
   children,
@@ -40,3 +40,5 @@ export default function Cell({
     </button>
   );
 }
+
+export default Cell;

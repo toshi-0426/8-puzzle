@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-export const BOARD_PATTERNS = [
+const BOARD_PATTERNS = [
   [5, 7, 6, 2, 3, 1, 8, 4],
   [8, 3, 2, 1, 6, 5, 7, 4],
   [8, 7, 6, 2, 1, 4, 3, 5],
@@ -31,7 +31,9 @@ export const BOARD_PATTERNS = [
   [3, 7, 2, 8, 4, 1, 6, 5],
 ];
 
-export const getInitialBoard = () => {
+const initBoard = () => {
   const puzzle = faker.helpers.arrayElement(BOARD_PATTERNS);
   return [...puzzle, 0];
 };
+
+export default initBoard;

@@ -3,7 +3,7 @@ type SuccessToastProps = {
   time: string;
 };
 
-export default function SuccessToast({ count, time }: SuccessToastProps) {
+function SuccessToast({ count, time }: SuccessToastProps) {
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-green-600/97 text-white rounded">
       <div className="space-y-2">
@@ -16,3 +16,5 @@ export default function SuccessToast({ count, time }: SuccessToastProps) {
     </div>
   );
 }
+
+export default SuccessToast;

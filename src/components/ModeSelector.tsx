@@ -7,7 +7,6 @@ export function ModeSelector({ activeMode, onModeChange }: ModeSelectorProps) {
   return (
     <select
       value={activeMode}
-      //className="border-2 rounded border-gray-900"
       className="appearance-none 
           bg-white 
           border-2 
