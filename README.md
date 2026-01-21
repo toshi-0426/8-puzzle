@@ -18,35 +18,15 @@ Here is a working live demo : [https://8-puzzle-lac.vercel.app/](https://8-puzzl
 
 ## Technologies used
 
-- **UI Library & Build Tool**
-
-  - React
-  - Vite
-
-- **Language**
-
-  - TypeScript
-
-- **Styling**
-
-  - Tailwind CSS
-
-- **State Management**
-
-  - Zustand
+- **Frontend:** React, TypeScript, Vite
+- **Styling:** Tailwind CSS
+- **State Management:** Zustand
 
 - **Algorithms**
 
   - A\* search with Manhattan-distance heuristic
   - BFS
   - Greedy algorithm with Manhattan-distance
-
-- **Testing**
-
-  - Jest
-
-- **Deployment & CI**
-  - Vercel
 
 ## Features
 
