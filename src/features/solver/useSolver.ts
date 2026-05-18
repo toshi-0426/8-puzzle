@@ -35,7 +35,7 @@ function useSolver() {
       setStats({ isCalculating: false, isSolved: false });
       console.log(`Path calculated: ${result.length} steps`);
     },
-    []
+    [setPath, setStats]
   );
 
   const changeAlgorithm = (algo: string) => {
@@ -99,7 +99,7 @@ function useSolver() {
       if (timerRef.current) clearInterval(timerRef.current);
     };
     // runCalculation(board, selectedAlgo);
-  }, []);
+  }, [runCalculation]);
 
   useEffect(() => {
     return () => stopAnimation();
