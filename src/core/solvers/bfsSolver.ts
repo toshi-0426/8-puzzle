@@ -3,13 +3,16 @@ import { movableIndices, reconstructPath } from '@/core/solvers/utils';
 
 function bfsSolver(initialBoard: number[]): number[] {
   const queue: number[][] = [initialBoard];
+  let head = 0;
+
   const visited = new Set<string>();
   const parent = new Map<string, { state: number[]; moveIndex: number }>();
 
   visited.add(JSON.stringify(initialBoard));
 
-  while (queue.length > 0) {
-    const currentBoard = queue.shift()!;
+  while (head < queue.length) {
+    const currentBoard = queue[head];
+    head++;
 
     if (isCompleted(currentBoard)) {
       return reconstructPath(parent);
@@ -22,12 +25,12 @@ function bfsSolver(initialBoard: number[]): number[] {
 
       if (!visited.has(newBoardStr)) {
         visited.add(newBoardStr);
-        const parentState = { state: currentBoard, moveIndex: index };
-        parent.set(newBoardStr, parentState);
+        parent.set(newBoardStr, { state: currentBoard, moveIndex: index });
         queue.push(newBoard);
       }
     }
   }
+
   return [];
 }
 
