@@ -21,11 +21,13 @@ function SolverBoard() {
       <div className="flex items-center justify-between my-3 mx-10 text-gray-900 font-bold gap-x-4">
         <div className="flex items-center gap-3">
           <select
-            defaultValue={selectedAlgo}
+            value={selectedAlgo}
             onChange={(e) => changeAlgorithm(e.target.value)}
+            className="border-[3px] border-[#0f380f] bg-[#e0f8cf] px-1 py-1 font-mono text-sm font-bold text-[#0f380f] uppercase rounded-none
+  cursor-pointer"
           >
             <option value="BFS">BFS</option>
-            <option value="Greedy">Greedy</option>
+            <option value="Greedy">GREEDY</option>
             <option value="A*">A*</option>
           </select>
           <Button
