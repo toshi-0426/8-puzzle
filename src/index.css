@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
 body {
-  @apply container mx-auto max-w-4xl bg-lime-500 min-h-screen flex justify-center items-center sm:my-2;
+  @apply container mx-auto max-w-4xl min-h-screen flex justify-center items-center sm:my-2;
+  /* background-color: #9bbc0f; */
+  background-color: #8bac0f;
+  /* background-color: #a3ad63; */
 }
