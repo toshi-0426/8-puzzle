@@ -9,7 +9,7 @@ type PuzzleBoardProps = {
 function PuzzleBoard({ board, isSolved, handleMove }: PuzzleBoardProps) {
   return (
     <>
-      <div className="grid grid-cols-3 grid-rows-3 gap-1 p-2 border-2 border-gray-700 rounded bg-black/20">
+      <div className="grid grid-cols-3 grid-rows-3 gap-1 p-2 border-[4px] border-[#0f380f] rounded-none bg-[#306230]">
         {board.map((cell, i) => (
           <Cell
             disabled={isSolved || !handleMove}

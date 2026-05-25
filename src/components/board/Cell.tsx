@@ -16,14 +16,15 @@ function Cell({
   disabled = false,
 }: CellProps) {
   const className =
-    'border-2 border-gray-800 aspect-square rounded-md font-mono font-bold transition-all duration-100 text-2xl sm:text-3xl';
+    'aspect-square border-[3px] border-[#0f380f] rounded-none font-mono font-bold text-2xl sm:text-3xl text-[#0f380f]';
+
   if (value === 0) {
     return (
       <button
         disabled
         value={index}
         onClick={onClick}
-        className={`${className} border-dashed bg-transparent`}
+        className={`${className} border-dashed bg-[#8bac0f] opacity-70 shadow-none`}
       >
         {' '}
       </button>
@@ -34,7 +35,7 @@ function Cell({
       value={index}
       disabled={disabled}
       onClick={onClick}
-      className={`${className} bg-gray-100 hover:bg-gray-200`}
+      className={`${className} bg-[#e0f8cf] shadow-[3px_3px_0_#306230] hover:bg-[#d9ead3] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_#306230]`}
     >
       {children}
     </button>
