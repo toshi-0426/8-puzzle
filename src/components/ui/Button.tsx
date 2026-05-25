@@ -1,20 +1,19 @@
+type ButtonColor = 'red' | 'blue';
+
 type ButtonProps = {
   className?: string;
-  color: string;
+  color: ButtonColor;
   disabled?: boolean;
   onClick?: () => void;
   children: React.ReactNode;
 };
 
-const colorClasses: Record<string, string> = {
-  red: 'bg-gradient-to-br from-red-500 to-red-600 border-red-900 text-gray-100',
-  blue: 'bg-gradient-to-br from-blue-500 to-blue-600 border-blue-900 text-gray-100',
+const colorClasses: Record<ButtonColor, string> = {
+  red: 'bg-[#9b2226] border-[#0f380f] text-[#e0f8cf]',
+  blue: 'bg-[#306230] border-[#0f380f] text-[#e0f8cf]',
 };
 
-const colorDisabledClasses: Record<string, string> = {
-  red: 'bg-gray-300 border-gray-400 text-gray-400',
-  blue: 'bg-gray-300 border-gray-400 text-gray-400',
-};
+const disabledClassName = 'bg-[#8b956d] border-[#306230] text-[#306230]';
 
 function Button({
   className = '',
@@ -23,15 +22,14 @@ function Button({
   children,
   onClick,
 }: ButtonProps) {
-  const colorClassName =
-    disabled === false
-      ? colorClasses[color] || colorClasses['red']
-      : colorDisabledClasses[color] || colorDisabledClasses['red'];
+  const colorClassName = disabled ? disabledClassName : colorClasses[color];
   return (
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`${className} ${colorClassName} flex items-center justify-center  font-bold rounded transition-all duration-100 font-mono tracking-wide bg-gradient-to-br from-${color}-500 to-${color}-600 border-2 border-${color}-900`}
+      className={`${className} ${colorClassName} flex items-center justify-center border-[3px] font-mono font-bold uppercase tracking-wide
+  shadow-[3px_3px_0_#0f380f] active:translate-x-[2px] active:translate-y-[2px] active:shadow-[1px_1px_0_#0f380f] disabled:shadow-none
+  disabled:translate-x-0 disabled:translate-y-0 rounded-none cursor-pointer`}
     >
       {children}
     </button>
