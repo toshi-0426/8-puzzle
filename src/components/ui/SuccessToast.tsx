@@ -7,11 +7,11 @@ function SuccessToast({ count, time }: SuccessToastProps) {
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-[#306230]/95 text-[#d9ead3] border-4 border-[#0f380f]">
       <div className="space-y-2">
-        <div className="text-xl sm:text-3xl semi-bold font-mono text-center">
+        <div className="text-xl sm:text-3xl font-bold font-mono text-center">
           CLEAR!
         </div>
         <div className="flex justify-center font-semibold font-mono">
-          MOVES {count}
+          {count} MOVES
         </div>
         <div className="flex justify-center font-semibold font-mono">
           TIME {time}
