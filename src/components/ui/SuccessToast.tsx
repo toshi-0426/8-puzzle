@@ -5,11 +5,7 @@ type SuccessToastProps = {
 
 function SuccessToast({ count, time }: SuccessToastProps) {
   return (
-    // <div className="absolute inset-0 flex items-center justify-center bg-green-600/97 text-white rounded">
-    <div
-      className="absolute inset-0 flex items-center justify-center bg-[#306230]/95 text-[#d9ead3] border-4 border-[#0f380f]
-  rounded"
-    >
+    <div className="absolute inset-0 flex items-center justify-center bg-[#306230]/95 text-[#d9ead3] border-4 border-[#0f380f]">
       <div className="space-y-2">
         <div className="text-xl sm:text-3xl semi-bold font-mono text-center">
           CLEAR!
