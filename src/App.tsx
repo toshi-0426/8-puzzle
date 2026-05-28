@@ -2,7 +2,6 @@ import GameBoard from '@/features/game/GameBoard';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SolverBoard from '@/features/solver/SolverBoard';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useModeStore } from '@/store/useModeStore';
 
 function App() {
@@ -15,17 +14,9 @@ function App() {
           <Header />
           <hr className="my-1 sm:my-2 border-lime-600  border-[1.8px]" />
         </div>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeMode}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="flex-1 w-full flex justify-center"
-          >
-            {activeMode === 'game' ? <GameBoard /> : <SolverBoard />}
-          </motion.div>
-        </AnimatePresence>
+        <div className="flex-1 w-full flex justify-center">
+          {activeMode === 'game' ? <GameBoard /> : <SolverBoard />}
+        </div>
       </div>
 
       <Footer />
